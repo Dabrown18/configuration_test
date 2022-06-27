@@ -8,12 +8,12 @@
     "start": "react-native start",
     "test": "jest",
     "lint": "eslint .",
-    "dev-android": "react-native run-android --variant=devDebug --appIdSuffix dev",
-    "dev-android-release-variant": "react-native run-android --variant=devRelease --appIdSuffix dev",
-    "dev-android-release": "cd android && ./gradlew clean && ./gradlew assembleDevRelease",
-    "live-android": "react-native run-android --variant=prodDebug --appIdSuffix live",
-    "live-android-release-variant": "react-native run-android --variant=prodRelease --appIdSuffix live",
-    "live-android-release": "cd android && ./gradlew clean && ./gradlew assembleProdRelease"
+    "android:staging": "react-native run-android --variant=stagingdebug",
+    "android:staging-release": "react-native run-android --variant=stagingrelease",
+    "android:dev": "react-native run-android --variant=developmentdebug",
+    "android:dev-release": "react-native run-android --variant=developmentrelease",
+    "android:prod": "react-native run-android --variant=productiondebug",
+    "android:prod-release": "react-native run-android --variant=productionrelease"
   },
   "dependencies": {
     "react": "18.0.0",

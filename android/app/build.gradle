@@ -1,15 +1,14 @@
-project {
-    release: ".env.dev",
-    debug: ".env.dev",
-    devdebug: ".env.dev",
-    devrelease: ".env.dev",
-    livedebug: ".env.live",
-    liverelease: ".env.live"
-}
-
-apply from: project(':react-native-config').projectDir.getPath() + "/dotenv.gradle"
+project.ext.envConfigFiles = [
+    productiondebug: ".env.production",
+    productionrelease: ".env.production",
+    developmentrelease: ".env.development",
+    developmentdebug: ".env.development",
+    stagingrelease: ".env.staging",
+    stagingdebug: ".env.staging"
+]
 
 apply plugin: "com.android.application"
+apply from: project(':react-native-config').projectDir.getPath() + "/dotenv.gradle"
 
 import com.android.build.OutputFile
 
@@ -145,25 +144,11 @@ android {
     compileSdkVersion rootProject.ext.compileSdkVersion
 
     flavorDimensions "default"
-    productFlavor {
-        dev {
-            minSdkVersion rootProject.ext.minSdkVersion
-            applicationId "com.awesomeproject.dev"
-            targetSdkVersion rootProject.ext.targetSdkVersion
-            resValue "string", "build_config_package", "com.awesomeproject"
-            versionCode 1
-            versionName "1.0"
-        }
-        live {
-            minSdkVersion rootProject.ext.minSdkVersion
-            applicationId "com.awesomeproject.live"
-            targetSdkVersion rootProject.ext.targetSdkVersion
-            resValue "string", "build_config_package", "com.awesomeproject"
-            versionCode 1
-            versionName "1.0"
-        }
-    }
-
+      productFlavors {
+        production {}
+        staging {}
+        development {}
+      }
     defaultConfig {
         applicationId "com.awesomeproject"
         minSdkVersion rootProject.ext.minSdkVersion
@@ -259,6 +244,7 @@ android {
     buildTypes {
         debug {
             signingConfig signingConfigs.debug
+            matchingFallbacks = ['debug', 'release']
         }
         release {
             // Caution! In production, you need to generate your own keystore file.
