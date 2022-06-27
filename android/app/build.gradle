@@ -1,4 +1,13 @@
+project {
+    release: ".env.dev",
+    debug: ".env.dev",
+    devdebug: ".env.dev",
+    devrelease: ".env.dev",
+    livedebug: ".env.live",
+    liverelease: ".env.live"
+}
 
+apply from: project(':react-native-config').projectDir.getPath() + "/dotenv.gradle"
 
 apply plugin: "com.android.application"
 
@@ -134,6 +143,26 @@ android {
     ndkVersion rootProject.ext.ndkVersion
 
     compileSdkVersion rootProject.ext.compileSdkVersion
+
+    flavorDimensions "default"
+    productFlavor {
+        dev {
+            minSdkVersion rootProject.ext.minSdkVersion
+            applicationId "com.awesomeproject.dev"
+            targetSdkVersion rootProject.ext.targetSdkVersion
+            resValue "string", "build_config_package", "com.awesomeproject"
+            versionCode 1
+            versionName "1.0"
+        }
+        live {
+            minSdkVersion rootProject.ext.minSdkVersion
+            applicationId "com.awesomeproject.live"
+            targetSdkVersion rootProject.ext.targetSdkVersion
+            resValue "string", "build_config_package", "com.awesomeproject"
+            versionCode 1
+            versionName "1.0"
+        }
+    }
 
     defaultConfig {
         applicationId "com.awesomeproject"
