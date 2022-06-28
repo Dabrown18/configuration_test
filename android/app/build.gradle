@@ -1,11 +1,12 @@
 project.ext.envConfigFiles = [
-    productiondebug: ".env.production",
-    productionrelease: ".env.production",
-    developmentrelease: ".env.development",
-    developmentdebug: ".env.development",
-    stagingrelease: ".env.staging",
-    stagingdebug: ".env.staging"
+    release: ".env.dev",
+    debug: ".env.dev",
+    devdebug: ".env.dev",
+    devrelease: ".env.dev",
+    proddebug: ".env.dev",
+    prodrelease: ".env.dev",
 ]
+
 
 apply plugin: "com.android.application"
 apply from: project(':react-native-config').projectDir.getPath() + "/dotenv.gradle"
@@ -144,11 +145,24 @@ android {
     compileSdkVersion rootProject.ext.compileSdkVersion
 
     flavorDimensions "default"
-      productFlavors {
-        production {}
-        staging {}
-        development {}
-      }
+        productFlavor {
+            dev {
+                minSdkVersion rootProject.ext.minSdkVersion
+                applicationId "com.awesomeprojectg.dev"
+                targetSdkVersion rootProject.ext.targetSdkVersion
+                resValue "string", "build_config_package", "com.awesomeproject"
+                versionCode 1
+                versionName "1.0"
+            }
+            live {
+                minSdkVersion rootProject.ext.minSdkVersion
+                applicationId "com.awesomeproject.live"
+                targetSdkVersion rootProject.ext.targetSdkVersion
+                resValue "string", "build_config_package", "com.awesomeproject"
+                versionCode 1
+                versionName "1.0"
+            }
+        }
     defaultConfig {
         applicationId "com.awesomeproject"
         minSdkVersion rootProject.ext.minSdkVersion
