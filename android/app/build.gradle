@@ -144,25 +144,27 @@ android {
 
     compileSdkVersion rootProject.ext.compileSdkVersion
 
-    flavorDimensions "default"
-        productFlavor {
-            dev {
-                minSdkVersion rootProject.ext.minSdkVersion
-                applicationId "com.awesomeprojectg.dev"
-                targetSdkVersion rootProject.ext.targetSdkVersion
-                resValue "string", "build_config_package", "com.awesomeproject"
-                versionCode 1
-                versionName "1.0"
-            }
-            live {
-                minSdkVersion rootProject.ext.minSdkVersion
-                applicationId "com.awesomeproject.live"
-                targetSdkVersion rootProject.ext.targetSdkVersion
-                resValue "string", "build_config_package", "com.awesomeproject"
-                versionCode 1
-                versionName "1.0"
-            }
-        }
+//     flavorDimensions "tier"
+//         productFlavor {
+//             dev {
+//                 dimension "tier"
+//                  minSdkVersion rootProject.ext.minSdkVersion
+//                  applicationId "com.awesomeproject.dev"
+//                  targetSdkVersion rootProject.ext.targetSdkVersion
+//                  resValue "string", "build_config_package", "com.awesomeproject"
+//                  versionCode 1
+//                  versionName "1.0"
+//             }
+//             live {
+//                 dimension "tier"
+//                  minSdkVersion rootProject.ext.minSdkVersion
+//                  applicationId "com.awesomeproject.live"
+//                  targetSdkVersion rootProject.ext.targetSdkVersion
+//                  resValue "string", "build_config_package", "com.awesomeproject"
+//                  versionCode 1
+//                  versionName "1.0"
+//             }
+//         }
     defaultConfig {
         applicationId "com.awesomeproject"
         minSdkVersion rootProject.ext.minSdkVersion
